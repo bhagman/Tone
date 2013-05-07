@@ -1,0 +1,17 @@
+$Id: changelog.txt 120 2010-07-17 19:01:15Z bhagman@roguerobotics.com $
+
+Tone Library
+
+Version Modified By Date     Comments
+------- ----------- -------- --------
+0001    B Hagman    09/08/02 Initial coding
+0002    B Hagman    09/08/18 Fixed: Multiple pins.
+0003    B Hagman    09/08/18 Fixed: Moved initialization from constructor to
+                                    begin().
+0004    B Hagman    09/09/26 Fixed: Problems with ATmega8.
+0005    B Hagman    09/11/23 Fixed: Scanned prescalars for best fit on 8 bit
+                                    timers
+                    09/11/25 Fixed: Pin toggle method to XOR.
+                    09/11/25 Fixed: timer0 from being excluded.
+0006    B Hagman    10/03/21 Fixed: License updates, minor fixes.
+        B Hagman    10/07/17 Fixed: (more) problems with ATmega8 (thanks to Pete62)
