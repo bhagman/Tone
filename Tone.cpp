@@ -23,7 +23,11 @@
 
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
-#include <wiring.h>
+#if (ARDUINO >= 100)
+	#include <Arduino.h>
+#else
+	#include <wiring.h>
+#endif
 #include <pins_arduino.h>
 #include "Tone.h"
 
