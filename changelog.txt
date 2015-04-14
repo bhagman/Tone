@@ -1,6 +1,4 @@
-$Id: changelog.txt 120 2010-07-17 19:01:15Z bhagman@roguerobotics.com $
-
-Tone Library
+Tone Library Changelog
 
 Version Modified By Date     Comments
 ------- ----------- -------- --------
@@ -15,3 +13,4 @@ Version Modified By Date     Comments
                     09/11/25 Fixed: timer0 from being excluded.
 0006    B Hagman    10/03/21 Fixed: License updates, minor fixes.
         B Hagman    10/07/17 Fixed: (more) problems with ATmega8 (thanks to Pete62)
+1.0.0   B Hagman    15/04/14 Migration to GitHub, including fixes for Wiring and Arduino.
