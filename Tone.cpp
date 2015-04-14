@@ -1,34 +1,50 @@
-/* $Id: Tone.cpp 119 2010-07-17 18:56:36Z bhagman@roguerobotics.com $
+/*
+|| @author         Brett Hagman <bhagman@wiring.org.co>
+|| @contribution   Fotis Papadopoulos <fpapadopou@gmail.com>
+|| @url            http://wiring.org.co/
+|| @url            http://roguerobotics.com/
+||
+|| @description
+|| | A Software Digital Square Wave Tone Generation Library
+|| |
+|| | Written by Brett Hagman
+|| | http://www.roguerobotics.com/
+|| | bhagman@roguerobotics.com, bhagman@wiring.org.co
+|| |
+|| | This is a Wiring Framework (Arduino) library to produce square-wave
+|| | tones on an arbitrary pin.
+|| |
+|| | You can make multiple instances of the Tone object, to create tones on
+|| | different pins.
+|| |
+|| | The number of tones that can be generated at the same time is limited
+|| | by the number of hardware timers available on the hardware.
+|| | (e.g. ATmega328 has 3 available timers, and the ATmega1280 has 6 timers)
+|| |
+|| | A simplified (single tone) version of this library has been included
+|| | in the Wiring Framework since Wiring 0025 and in the Arduino distribution
+|| | since Arduino 0018.
+|| |
+|| #
+||
+|| @license Please see the accompanying LICENSE.txt file for this project.
+||
+|| @name Software PWM Library
+|| @type Library
+|| @target Atmel AVR 8 Bit
+||
+|| @version 1.0.0
+||
+*/
 
-  A Tone Generator Library
-
-  Written by Brett Hagman
-  http://www.roguerobotics.com/
-  bhagman@roguerobotics.com
-
-    This library is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-*************************************************/
-
-#include <avr/interrupt.h>
-#include <avr/pgmspace.h>
-#if (ARDUINO >= 100)
-	#include <Arduino.h>
+#if defined(WIRING)
+ #include <Wiring.h>
+#elif ARDUINO >= 100
+ #include <Arduino.h>
 #else
-	#include <wiring.h>
+ #include <WProgram.h>
 #endif
-#include <pins_arduino.h>
+
 #include "Tone.h"
 
 #if defined(__AVR_ATmega8__)
@@ -517,3 +533,4 @@ ISR(TIMER5_COMPA_vect)
 }
 
 #endif
+

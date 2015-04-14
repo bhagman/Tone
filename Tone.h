@@ -1,34 +1,50 @@
-/* $Id: Tone.h 113 2010-06-16 20:16:29Z bhagman@roguerobotics.com $
-
-  A Tone Generator Library
-
-  Written by Brett Hagman
-  http://www.roguerobotics.com/
-  bhagman@roguerobotics.com
-
-    This library is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-*************************************************/
+/*
+|| @author         Brett Hagman <bhagman@wiring.org.co>
+|| @contribution   Fotis Papadopoulos <fpapadopou@gmail.com>
+|| @url            http://wiring.org.co/
+|| @url            http://roguerobotics.com/
+||
+|| @description
+|| | A Software Digital Square Wave Tone Generation Library
+|| |
+|| | Written by Brett Hagman
+|| | http://www.roguerobotics.com/
+|| | bhagman@roguerobotics.com, bhagman@wiring.org.co
+|| |
+|| | This is a Wiring Framework (Arduino) library to produce square-wave
+|| | tones on an arbitrary pin.
+|| |
+|| | You can make multiple instances of the Tone object, to create tones on
+|| | different pins.
+|| |
+|| | The number of tones that can be generated at the same time is limited
+|| | by the number of hardware timers available on the hardware.
+|| | (e.g. ATmega328 has 3 available timers, and the ATmega1280 has 6 timers)
+|| |
+|| | A simplified (single tone) version of this library has been included
+|| | in the Wiring Framework since Wiring 0025 and in the Arduino distribution
+|| | since Arduino 0018.
+|| |
+|| #
+||
+|| @license Please see the accompanying LICENSE.txt file for this project.
+||
+|| @name Software PWM Library
+|| @type Library
+|| @target Atmel AVR 8 Bit
+||
+|| @version 1.0.0
+||
+*/
 
 #ifndef _Tone_h
 #define _Tone_h
 
 #include <stdint.h>
 
-/*************************************************
-* Public Constants
-*************************************************/
+/*
+|| Public Constants
+*/
 
 #define NOTE_B0  31
 #define NOTE_C1  33
@@ -121,9 +137,9 @@
 #define NOTE_DS8 4978
 
 
-/*************************************************
-* Definitions
-*************************************************/
+/*
+|| Definitions
+*/
 
 class Tone
 {
@@ -140,3 +156,4 @@ class Tone
 };
 
 #endif
+
