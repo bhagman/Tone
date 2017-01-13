@@ -14,9 +14,9 @@ Be sure to try out the RTTTL (RingTone Text Transfer Language) example!
 
 ### Arduino Core Version ###
 
-A simplified version of the Tone library has been incorporated into the Arduino core since 0018.  It only provides a single tone (since only one timer is used).  You can find the core documentation [here](http://arduino.cc/en/Reference/Tone here).
+A simplified version of the Tone library has been incorporated into the Arduino core since 0018.  It only provides a single tone (since only one timer is used).  You can find the core documentation [here](http://arduino.cc/en/Reference/Tone).
 
-Check out the [tutorial](http://itp.nyu.edu/physcomp/Labs/ToneOutput tutorial) by Tom Igoe at NYU's Interactive Telecommunications Program (ITP).  It demonstrates how to use the core `tone()` and `noTone()` commands.
+Check out the [tutorial](http://itp.nyu.edu/physcomp/labs/labs-arduino-digital-and-analog/tone-output-using-an-arduino/) by Tom Igoe at NYU's Interactive Telecommunications Program (ITP).  It demonstrates how to use the core `tone()` and `noTone()` commands.
 
 ### _WARNING_ ###
 *_Do not connect the pin directly to some sort of audio input.  The voltage is considerably higher than a standard [line level voltages](http://en.wikipedia.org/wiki/Line_level), and can damage sound card inputs, etc.  You could use a voltage divider to bring the voltage down, but you have been warned._*
@@ -239,18 +239,13 @@ After all is said and done, because `play()` only accepts unsigned integers for 
 
 ### Projects/Examples Using Tone Library and Wiring Framework Version of `tone()` ###
 
-  * [Tom Igoe - Tone Output using an Arduino](http://itp.nyu.edu/physcomp/Labs/ToneOutput)
-  * [Interactive painting](http://www.jeremycouillard.com/blog/03172010/)
+  * [Tom Igoe - Tone Output using an Arduino](http://itp.nyu.edu/physcomp/labs/labs-arduino-digital-and-analog/tone-output-using-an-arduino/)
+  * [Evan Kale - Build Your Own Metal Detector with an Arduino](http://www.allaboutcircuits.com/projects/metal-detector-with-arduino/)
 
 ### RTTTL Sites ###
 
   * http://merwin.bespin.org/db/rts/index.php
   * http://www.cellringtones.com/
-  * http://nokiatone.ifrance.com/nokiatone/rtttf.htm
-  * http://www.ringtones4all.com/index.php?page=freetone&catr=20&cnt=0
-  * http://ringtones.frostzone.com/
-  * http://www.2thumbswap.com/members/tones/nokia/tones_nokia_main.html
-  * http://hem.passagen.se/klas2/vgtones/
   * http://arcadetones.emuunlim.com/
 
 ### Other ###
