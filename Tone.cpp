@@ -77,7 +77,7 @@ volatile int32_t timer2_toggle_count;
 volatile uint8_t *timer2_pin_port;
 volatile uint8_t timer2_pin_mask;
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 volatile int32_t timer3_toggle_count;
 volatile uint8_t *timer3_pin_port;
 volatile uint8_t timer3_pin_mask;
@@ -90,7 +90,7 @@ volatile uint8_t timer5_pin_mask;
 #endif
 
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 
 #define AVAILABLE_TONE_PINS 6
 
@@ -192,7 +192,7 @@ ISR(TIMER2_COMPA_vect)
 
 
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 
 #ifdef WIRING
 void Tone_Timer3_Interrupt(void)
@@ -272,6 +272,8 @@ void Tone::begin(uint8_t tonePin)
     // All timers in CTC mode
     // 8 bit timers will require changing prescalar values,
     // whereas 16 bit timers are set to either ck/1 or ck/64 prescalar
+	//Serial.print("Timer: ");
+	//Serial.println(_timer);
     switch (_timer)
     {
 #if !defined(__AVR_ATmega8__)
@@ -291,6 +293,7 @@ void Tone::begin(uint8_t tonePin)
 
       case 1:
         // 16 bit timer
+		//Serial.println("16 bit timer");
         TCCR1A = 0;
         TCCR1B = 0;
         bitWrite(TCCR1B, WGM12, 1);
@@ -314,9 +317,10 @@ void Tone::begin(uint8_t tonePin)
 #endif
       break;
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
       case 3:
         // 16 bit timer
+		//Serial.println("16 bit timer");
         TCCR3A = 0;
         TCCR3B = 0;
         bitWrite(TCCR3B, WGM32, 1);
@@ -329,6 +333,7 @@ void Tone::begin(uint8_t tonePin)
         break;
       case 4:
         // 16 bit timer
+		//Serial.println("16 bit timer");
         TCCR4A = 0;
         TCCR4B = 0;
         bitWrite(TCCR4B, WGM42, 1);
@@ -341,6 +346,7 @@ void Tone::begin(uint8_t tonePin)
         break;
       case 5:
         // 16 bit timer
+		//Serial.println("16 bit timer");
         TCCR5A = 0;
         TCCR5B = 0;
         bitWrite(TCCR5B, WGM52, 1);
@@ -438,7 +444,7 @@ void Tone::play(uint16_t frequency, uint32_t duration)
 
       if (_timer == 1)
         TCCR1B = (TCCR1B & 0b11111000) | prescalarbits;
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
       else if (_timer == 3)
         TCCR3B = (TCCR3B & 0b11111000) | prescalarbits;
       else if (_timer == 4)
@@ -478,6 +484,11 @@ void Tone::play(uint16_t frequency, uint32_t duration)
         OCR1A = ocr;
         timer1_toggle_count = toggle_count;
         bitWrite(TIMSK1, OCIE1A, 1);
+		//Check to see if the timer has already passed the new ocr value
+		if ( TCNT1 > ocr ){
+			TCNT1 = 0; //reset clock
+			//Serial.println("reset timer");
+		}
         break;
       case 2:
         OCR2A = ocr;
@@ -485,21 +496,36 @@ void Tone::play(uint16_t frequency, uint32_t duration)
         bitWrite(TIMSK2, OCIE2A, 1);
         break;
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
       case 3:
         OCR3A = ocr;
         timer3_toggle_count = toggle_count;
         bitWrite(TIMSK3, OCIE3A, 1);
+		//Check to see if the timer has already passed the new ocr value
+		if ( TCNT3 > ocr ){
+			TCNT3 = 0; //reset clock
+			//Serial.println("reset timer");
+		}
         break;
       case 4:
         OCR4A = ocr;
         timer4_toggle_count = toggle_count;
         bitWrite(TIMSK4, OCIE4A, 1);
+		//Check to see if the timer has already passed the new ocr value
+		if ( TCNT4 > ocr ){
+			TCNT4 = 0; //reset clock
+			//Serial.println("reset timer");
+		}
         break;
       case 5:
         OCR5A = ocr;
         timer5_toggle_count = toggle_count;
         bitWrite(TIMSK5, OCIE5A, 1);
+		//Check to see if the timer has already passed the new ocr value
+		if ( TCNT5 > ocr ){
+			TCNT5 = 0; //reset clock
+			//Serial.println("reset timer");
+		}
         break;
 #endif
 
@@ -524,7 +550,7 @@ void Tone::stop()
       TIMSK2 &= ~(1 << OCIE2A);
       break;
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     case 3:
       TIMSK3 &= ~(1 << OCIE3A);
       break;
@@ -560,7 +586,7 @@ bool Tone::isPlaying(void)
       returnvalue = (TIMSK2 & (1 << OCIE2A));
       break;
 
-#if defined(__AVR_ATmega1280__)
+#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
     case 3:
       returnvalue = (TIMSK3 & (1 << OCIE3A));
       break;
