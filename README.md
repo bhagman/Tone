@@ -14,7 +14,7 @@ Be sure to try out the RTTTL (RingTone Text Transfer Language) example!
 
 ### Arduino Core Version ###
 
-A simplified version of the Tone library has been incorporated into the Arduino core since 0018.  It only provides a single tone (since only one timer is used).  You can find the core documentation [here](http://arduino.cc/en/Reference/Tone).
+A simplified version of the Tone library has been incorporated into the Arduino core since 0018.  It only provides a single tone (since only one timer is used).  You can find the core documentation [here](https://www.arduino.cc/reference/en/language/functions/advanced-io/tone).
 
 Check out the [tutorial](http://itp.nyu.edu/physcomp/labs/labs-arduino-digital-and-analog/tone-output-using-an-arduino/) by Tom Igoe at NYU's Interactive Telecommunications Program (ITP).  It demonstrates how to use the core `tone()` and `noTone()` commands.
 
